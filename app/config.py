@@ -21,6 +21,14 @@ class Settings(BaseSettings):
     max_article_age_h: int = 6
     log_level: str = "INFO"
 
+    # RSS Feeds configuration
+    rss_feeds: list[dict] = [
+        {"name": "CoinDesk", "url": "https://www.coindesk.com/arc/outboundfeeds/rss/", "tier": 1},
+        {"name": "The Block", "url": "https://www.theblock.co/rss.xml", "tier": 1},
+        {"name": "Decrypt", "url": "https://decrypt.co/feed", "tier": 1},
+        {"name": "Cointelegraph", "url": "https://cointelegraph.com/rss", "tier": 2},
+    ]
+
     @property
     def tickers_list(self) -> list[str]:
         return [t.strip().upper() for t in self.watched_tickers.split(",") if t.strip()]
@@ -29,3 +37,13 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+
+# Full names for ticker matching in article text
+TICKER_NAMES: dict[str, list[str]] = {
+    "BTC": ["bitcoin"],
+    "ETH": ["ethereum"],
+    "LINK": ["chainlink"],
+    "AVAX": ["avalanche"],
+    "XRP": ["ripple"],
+    "BNB": ["binance"],
+}
