@@ -10,7 +10,7 @@ from fastapi import FastAPI
 
 from app.collector import close_http_client
 from app.config import settings
-from app.database import Article, PipelineLog, async_session, engine
+from app.database import Article, Base, PipelineLog, async_session, engine
 from app.dedup import cleanup_old_hashes
 from app.pipeline import run_pipeline
 from app.poster import close_bot
@@ -54,6 +54,11 @@ async def lifespan(app: FastAPI):
     logger.info(f"Poll interval: {settings.poll_interval_min} min")
     logger.info(f"Impact threshold: {settings.impact_threshold}")
     logger.info(f"Watched tickers: {settings.tickers_list}")
+
+    # Create tables if they don't exist
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+    logger.info("Database tables ensured")
 
     # Schedule pipeline
     scheduler.add_job(
