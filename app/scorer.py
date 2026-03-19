@@ -42,11 +42,17 @@ IMPACT SCORING (1-10):
       minor project updates, rehashed news
 
 TRANSLATION RULES:
-- Translate title and write 2-3 sentence summary in Russian
+- Translate title to Russian (short, factual)
+- Write a DETAILED retelling in Russian: 4-6 sentences covering key facts
+- Structure the body with line breaks between logical paragraphs
+- Use emoji markers at the start of paragraphs where appropriate:
+  📊 for data/numbers, 🔒 for security, ⚡ for speed/launch,
+  🏛 for institutional/regulatory, 🧠 for analysis/opinion
 - Keep crypto terms in English: staking, DeFi, L2, DEX, CEX, TVL, APY
 - Keep project names in English: Chainlink, Avalanche, Binance
 - DO NOT add facts not present in the source text
 - DO NOT add your opinion or analysis
+- Write as a news editor retelling the story, not summarizing it
 
 CRITICAL — HUMAN WRITING STYLE FOR RUSSIAN TEXT:
 Write like a live news editor, NOT like AI. Your Russian text MUST avoid these patterns:
@@ -77,7 +83,7 @@ RESPOND ONLY IN JSON (no markdown, no backticks):
   "impact_reason": "brief reason in English",
   "tickers": ["BTC"],
   "title_ru": "Russian title — short, factual, no AI fluff",
-  "body_ru": "2-3 sentence summary in Russian — news wire style",
+  "body_ru": "4-6 sentence detailed retelling in Russian with emoji markers and line breaks",
   "is_duplicate": false
 }"""
 

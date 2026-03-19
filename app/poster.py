@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 _bot: Bot | None = None
 
 # Rate limit: minimum seconds between posts
-POST_DELAY_SECONDS = 3
+POST_DELAY_SECONDS = 60
 
 
 def get_bot() -> Bot:
@@ -44,7 +44,7 @@ async def send_to_channel(
             chat_id=channel_id,
             text=message_text,
             parse_mode=ParseMode.HTML,
-            disable_web_page_preview=False,
+            disable_web_page_preview=True,
         )
         logger.info(
             f"Posted to channel: [{article.source}] '{article.title[:50]}' "
