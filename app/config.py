@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     telegram_channel_id: str = ""
 
     # Pipeline
-    watched_tickers: str = "BTC,ETH,LINK,AVAX,XRP,BNB"
+    watched_tickers: str = "BTC,ETH,LINK,AVAX,XRP,BNB,LTC"
     impact_threshold: int = 6
     poll_interval_min: int = 15
     max_article_age_h: int = 6
@@ -27,6 +27,9 @@ class Settings(BaseSettings):
         {"name": "The Block", "url": "https://www.theblock.co/rss.xml", "tier": 1},
         {"name": "Decrypt", "url": "https://decrypt.co/feed", "tier": 1},
         {"name": "Cointelegraph", "url": "https://cointelegraph.com/rss", "tier": 2},
+        {"name": "BlockNews", "url": "https://blocknews.com/feed/", "tier": 2},
+        {"name": "Bitcoin Magazine", "url": "https://bitcoinmagazine.com/feed", "tier": 1},
+        {"name": "CryptoSlate", "url": "https://cryptoslate.com/feed/", "tier": 2},
     ]
 
     @property
@@ -46,4 +49,5 @@ TICKER_NAMES: dict[str, list[str]] = {
     "AVAX": ["avalanche"],
     "XRP": ["ripple"],
     "BNB": ["binance"],
+    "LTC": ["litecoin"],
 }
